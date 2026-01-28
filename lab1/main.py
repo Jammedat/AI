@@ -1,7 +1,11 @@
 import streamlit as st
+import os
 import joblib
  
-model = joblib.load('knn_model.joblib')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "knn_model.joblib")
+
+model = joblib.load(MODEL_PATH)
 st.title("Titanic Survivors Prediction")
 
 PassengerId = st.number_input(label="Passenger Id", min_value=1, max_value=891, value=21)
